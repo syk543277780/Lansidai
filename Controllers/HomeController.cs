@@ -24,7 +24,7 @@ namespace LanSiDai.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            //lalala
             return View();
         }
 
