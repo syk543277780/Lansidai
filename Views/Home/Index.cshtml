@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LanSiDai.Models.Questions>
+
+@{
+    ViewBag.Title = "Index";
+ }
+<div class="lansidai-contianer">
+    @foreach (var item in Model)
+    {
+        <div class="question-container">
+            <div class="container" style="padding-top:5px">
+                <p>@item.Description</p>
+                <p>Creat Person</p>
+                <p>@item.CreatTime</p>
+            </div>
+        </div>
+    }
+</div>
+<div class="bottom-tab-bar">
+    <div class="col-xs-4">
+        @Html.ActionLink("热门","AskQuestion","Home")
+    </div>
+    <div class="col-xs-4">
+        @Html.ActionLink("我要提问", "AskQuestion", "Home")
+    </div>
+    <div class="col-xs-4">
+        @Html.ActionLink("我的问题", "AskQuestion", "Home")
+    </div>
+</div>
+<style>
+    .question-container p {
+        font-size:10px;
+    }
+    .lansidai-contianer {
+        background-color: #ececec;
+    }
+
+    .question-container {
+        background-color: white;
+        height: 100px;
+        position: relative;
+        top: 3px;
+        margin-top: 10px;
+    }
+    .bottom-tab-bar {
+        height:30px;
+        width:100%;
+        position:fixed;
+        bottom:0;
+        background-color:white;
+        z-index:1000;
+    }
+</style>

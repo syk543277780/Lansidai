@@ -1,0 +1,101 @@
+﻿@model LanSiDai.Models.Questions
+
+@{
+    ViewBag.Title = "AskQuestion";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        匿名提问:<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        
+        <textarea name="Description" rows="10" style="width:100%;max-width: 100%;"></textarea>
+        <p style="color:gray; letter-spacing:1px;line-height:1.5;margin-top:20px"><span class="glyphicon glyphicon-exclamation-sign">
+              </span>请告知性别、年龄、问题、症状出现的时间等信息、以增加回复的准确性。单次提问咨询单个问题，以保证专家提供更全面的建议</p>
+        @*To do, add current user id here*@
+        <input type="hidden" name="CreatTime" value="@DateTime.Now">
+
+        <div class="btn-askQuestion">
+            <input type="submit" value="提交问题" class="btn btn-success" style="width:100%;max-width: 100%;"/>
+        </div>
+    </div>
+}
+
+
+
+<style>
+    .btn-askQuestion {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        height: 25px;
+
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 17px;
+        top:9px;
+        left:3px;
+    }
+
+        .switch input {
+            display: none;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 1px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
