@@ -7,9 +7,10 @@
     @foreach (var item in Model)
     {
         <div class="question-container">
-            <div class="container" style="padding-top:5px">
+            <div class="container paragraph-3-lines" style="padding-top:5px" >
                 <p>@item.Description</p>
                 <p>Creat Person</p>
+                <input class="hidden-value-questionId" type="hidden" value="@item.Id">
                 <p>@item.CreatTime</p>
             </div>
         </div>
@@ -27,8 +28,14 @@
     </div>
 </div>
 <style>
+    .paragraph-3-lines p{
+        max-height: 60px;
+        line-height: 20px; /* Height / no. of lines to display */
+        letter-spacing:1px;
+        overflow: hidden;
+    } 
     .question-container p {
-        font-size:10px;
+        font-size: 15px;
     }
     .lansidai-contianer {
         background-color: #ececec;
@@ -36,10 +43,11 @@
 
     .question-container {
         background-color: white;
-        height: 100px;
+        max-height: 200px;
         position: relative;
         top: 3px;
         margin-top: 10px;
+        overflow:hidden;
     }
     .bottom-tab-bar {
         height:30px;
@@ -50,3 +58,17 @@
         z-index:1000;
     }
 </style>
+
+
+<script src="~/Scripts/Homejs/Indexjs.js"></script>
+<script>
+    main({
+        selector: {
+            questionContainer: ".question-container",
+            questionId:".hidden-value-questionId",
+        },
+        url: {
+            questionUrl : "@Url.Action("QuestionDetail","Home")",
+        }
+    });
+</script>

@@ -53,5 +53,14 @@ namespace LanSiDai.Controllers
             
         }
 
+        public ActionResult QuestionDetail(int questionId) {
+            using (var db = new LansidaiDB()) {
+                var result = db.Questions.Where(a => a.Id == questionId).FirstOrDefault();
+                if (result != null) {
+                    return View(result);
+                }
+            }return null;
+        }
+
     }
 }

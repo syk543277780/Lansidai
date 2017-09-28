@@ -1,0 +1,38 @@
+﻿@model LanSiDai.Models.Questions
+@{
+    ViewBag.Title = "QuestionDetail";
+}
+<div class="question-detail-container">
+    <div style="width:100%;background-color:white">
+        <div class="container">
+            @Html.Partial("_questionAndreply", Model)
+        </div>
+    </div>
+    <div class="doctor-inform">
+        <div class="container">
+            <p>医生信息</p>
+        </div>
+    </div>
+</div>
+<input type="button" class="btn btn-success" id="btn-reqply-question" value="回复评论">
+
+
+<style>
+    .question-detail-container {
+        background-color: lightgray;
+        width: 100%;
+    }
+
+    .doctor-inform {
+        position: relative;
+        top: 5px;
+        height: 20px;
+        background-color: white;
+    }
+    #btn-reqply-question {
+        width:100%;
+        max-width:100%;
+        position:fixed;
+        bottom:0;
+    }
+</style>
